@@ -55,7 +55,7 @@ if [ ! "$SKIP_PIP_INSTALL" ]; then
     #apt-get install gfortran
     #type libblas-dev
     
-    CFLAGS="-g0 -Wl,--strip-all -I/usr/include:/usr/local/include -L/usr/lib:/usr/local/lib" /app/.heroku/python/bin/pip install --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir --compile --global-option=build_ext pandas 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
+    CFLAGS="-g0 -I/usr/include:/usr/local/include -L/usr/lib:/usr/local/lib" /app/.heroku/python/bin/pip install --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir --compile --global-option=build_ext pandas 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
     find "$BUILD_DIR/.heroku/python" -name pandas -exec du -d1 {} +
     PIP_STATUS="${PIPESTATUS[0]}"
     set -e
