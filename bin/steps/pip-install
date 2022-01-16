@@ -44,7 +44,7 @@ if [ ! "$SKIP_PIP_INSTALL" ]; then
         exit 1
     fi
     
-    find "$BUILD_DIR/.heroku/python" -name numpy -exec du -d1 {} +
+    find "$BUILD_DIR/.heroku/python" -name pandas -exec du -d1 {} +
 
     /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements.txt" --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir --compile  2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
 
