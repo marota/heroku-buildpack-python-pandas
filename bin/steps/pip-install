@@ -48,15 +48,15 @@ if [ ! "$SKIP_PIP_INSTALL" ]; then
 
     /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements.txt" --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir --compile  2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
 
-    /app/.heroku/python/bin/pip uninstall -y numpy 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
+    /app/.heroku/python/bin/pip uninstall -y pandas 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
     
     #apt-get install libblas-dev 
     #apt-get install liblapacke-dev 
     #apt-get install gfortran
     #type libblas-dev
     
-    CFLAGS="-g0 -Wl,--strip-all -I/usr/include:/usr/local/include -L/usr/lib:/usr/local/lib" /app/.heroku/python/bin/pip install --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir --compile --global-option=build_ext numpy 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
-    find "$BUILD_DIR/.heroku/python" -name numpy -exec du -d1 {} +
+    CFLAGS="-g0 -Wl,--strip-all -I/usr/include:/usr/local/include -L/usr/lib:/usr/local/lib" /app/.heroku/python/bin/pip install --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir --compile --global-option=build_ext pandas 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
+    find "$BUILD_DIR/.heroku/python" -name pandas -exec du -d1 {} +
     PIP_STATUS="${PIPESTATUS[0]}"
     set -e
 
